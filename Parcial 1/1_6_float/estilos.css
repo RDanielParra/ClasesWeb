@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.contenedor{
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    background-color: rgb(211, 211, 211);
+    overflow: auto;
+}
+.caja{
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    background-color: lightsteelblue;
+}
+.float{
+    float: right;
+}

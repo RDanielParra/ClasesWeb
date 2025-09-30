@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cancun</title>
+</head>
+<style>
+  *{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+  }
+  main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    z-index: 5;
+    width: 100dvw;
+    height: 100dvh;
+  }
+  .background_img{
+    width: 100dvw;
+    height: 100dvh;
+    background-image: url("cancun.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    z-index: 1;
+  }
+  .background_color{
+    width: 100dvw;
+    height: 100dvh;
+    background-color: gray;
+    position: fixed;
+    opacity: .4;
+    z-index: 10;
+  }
+  .box{
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    background-color: aliceblue;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.74);
+    width: 60dvw;
+    height: 97dvh;
+    /*overflow-y: scroll;
+    overscroll-behavior-inline: none;*/
+    position: relative;
+    border-radius: 60px;
+    padding: 30px;
+    z-index: 15;
+  }
+  .box::-webkit-scrollbar {
+    display: none;
+  }
+  h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 5px;
+  }
+  p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 80%;
+    margin: 5px;
+  }
+  ul{
+    width: 80%;
+    margin: 5px;
+    list-style: circle;
+    list-style-type: disc;
+  }
+  li{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 40px;
+  }
+  img{
+    border-radius: 20px;
+    width: 200px;
+  }
+  #cuadro{
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    position: absolute;
+    z-index: 200;
+  }
+</style>
+<body>
+  <div class="background_img"></div>
+  <div class="background_color"></div>
+  <div id="cuadro"></div>
+  <main>
+    <div class="box">
+      <h1>Cancún</h1>
+      <p>
+        Cancún es una ciudad de fama mundial ubicada en la costa noreste de la península de Yucatán en México, en el estado de Quintana Roo. Es un destino turístico principal, conocido por sus playas de arena blanca, sus aguas de color turquesa y su vibrante vida nocturna.
+      <p>
+        El nombre "Cancún" tiene su origen en la lengua maya. Aunque hay dos posibles traducciones, la más aceptada es "nido de serpientes" o "lugar de la  serpiente".
+      </p>
+      <p>La ciudad se divide en dos áreas principales:</p>
+        <ul>
+          <li>
+            <b>Zona Hotelera:</b> Una franja de 21 kilómetros en forma de "7" con hoteles de lujo, resorts todo incluido, restaurantes, discotecas y centros comerciales. Es el corazón turístico de Cancún.
+          </li>
+
+          <li>
+            <b>Centro:</b> El área urbana de Cancún, donde vive la gente local. Aquí puedes encontrar mercados de artesanías, parques, restaurantes de comida mexicana auténtica y un ambiente más relajado.
+          </li>  
+        </ul>
+        <p>
+          Cancún es también una excelente base para explorar la riqueza cultural y natural de la región, como las antiguas ruinas mayas de Chichén Itzá y Tulum, así como los místicos cenotes (pozos naturales de agua dulce).
+        </p>
+      </p>
+      <img src="https://content.presspage.com/uploads/2278/1920_can.jpeg?10000" alt="letras_cancun">
+    </div>  
+  </main>
+</body>
+<script>
+  const LIMIT_X = 1200;
+  const LIMIT_Y = 500;
+
+window.addEventListener("load", () => {
+  const cuadro = document.querySelector("#cuadro"); // Asegúrate de tener un ID en tu cuadro
+
+  cuadro.addEventListener("mouseover", moveCuadro);
+
+  function moveCuadro(e) {
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+    let newX, newY;
+
+    do {
+      newX = Math.random() * LIMIT_X;
+      newY = Math.random() * LIMIT_Y;
+    } while (isMouseOverCuadro(mouseX, mouseY, newX, newY));
+
+    cuadro.style.top = newY + "px";
+    cuadro.style.left = newX + "px";
+  }
+
+  function isMouseOverCuadro(mX, mY, x, y) {
+    const rect = cuadro.getBoundingClientRect();
+    const conflict = (mX > x && mY < (x + rect.width) && mY > y && mY < (y + rect.height));
+    return conflict;
+  }
+});   
+</script>
+</html>
