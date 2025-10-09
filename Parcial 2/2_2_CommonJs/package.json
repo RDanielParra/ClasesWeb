@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "cowsay": "^1.6.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.0"
+  }
+}
